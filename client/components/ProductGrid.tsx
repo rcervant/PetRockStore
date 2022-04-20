@@ -23,8 +23,8 @@ export default function (): JSX.Element {
     const optionsObject = {
       method: 'POST',
       headers: { 'Content-Type': 'Application/JSON' },
-      // body: JSON.stringify({ rock_id: productInfo, user_id: 2 }),
-      body: JSON.stringify({ rock_id: 3, user_id: 2 }),
+      body: JSON.stringify({ rock_id: productInfo, user_id: 2 }),
+      // body: JSON.stringify({ rock_id: 3, user_id: 2 }),
     };
     fetch('/shop', optionsObject);
   };
@@ -49,10 +49,12 @@ export default function (): JSX.Element {
               onClick={(e) => {
                 // e.target && addCart(Number(e.target));
 
-                addCart(e);
+                if (e.target instanceof Element) { 
+                addCart(e.target.id);
                 console.log('e.target: ', e.target);
                 // console.log('e.target: ', e.target.getAttribute('id'));
                 console.log(e);
+              }
               }}
             >
               Add to Cart
